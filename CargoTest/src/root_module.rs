@@ -1,6 +1,14 @@
 pub mod root {
+    // use std::fmt::Pointer;
+
     struct Test {
         name: String
+    }
+    
+    impl std::fmt::Display for Test {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            write!(f, "Name of Test struct: {}", self.name)
+        }
     }
     
     // impl Test {
@@ -30,9 +38,9 @@ pub mod root {
             let mut v: Vec<&Test> = Vec::new();
             v.push(&t);
 
-            println!("veccie: {}", &v[0].name)    
+            println!("veccie: {}", &v[0])    
         }
         
-        println!("{}", t.name)
+        println!("{}", t)
     }
 }
