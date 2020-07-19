@@ -10,7 +10,7 @@ mod c8_vec {
     }
     
     impl Action {
-        fn get_name(&self) -> String{
+        fn get_name(&self) -> String {
             match self {
                 Action::Mean(_) => String::from("mean"),
                 Action::Median(_) => String::from("median"),
@@ -111,15 +111,17 @@ mod c8_vec {
 }
 
 pub fn run(){
+    use self::c8_vec::{Action, handle};
+    
     // let t = [1,2,3,4];
     
     let actions = vec![
-        c8_vec::Action::Mean(vec![3,9,1,2,6]),    
-        c8_vec::Action::Median(vec![5,1,9,2,7]),    
-        c8_vec::Action::Mode(vec![1,5,5,2,2,5,3,3,4,4,4,5,5]),    
+        Action::Mean(vec![3,9,1,2,6]),    
+        Action::Median(vec![5,1,9,2,7]),    
+        Action::Mode(vec![1,5,5,2,2,5,3,3,4,4,4,5,5]),    
     ];
 
     for action in actions {
-        println!("Action: {}, resulted in value: {}", action, c8_vec::handle(&action));
+        println!("Action: {}, resulted in value: {}", action, handle(&action));
     }
 }
