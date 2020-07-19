@@ -2,6 +2,8 @@ pub mod root {
     // use std::fmt::Pointer;
 
     use std::alloc::Layout;
+    use std::collections::HashMap;
+    use std::ptr::hash;
 
     struct Test {
         name: String
@@ -70,6 +72,34 @@ pub mod root {
             //let x = &t.name;
 
             const INT_LITERAL: u32 = 500_000; //_ ayyy
+            
+            let veccy = vec![1, 2];
+            let veccy_keys = vec![String::from("s1"), String::from("s2")];
+            
+            //veccy and veccy_keys are both consumed by into_iter/zip
+            //values are moved out of the original vectors
+            //collect() can become many a type; thus we need to help Rust by typehinting to HashMap<>
+            //both key and value type can be inferred and thus we can discard those via an underscore
+            let mut hashy: HashMap<_, _> = veccy_keys.into_iter().zip(veccy).collect();
+            
+            println!("Length (should be 2): {}", hashy.len());
+            
+            //Insert overwrites existing values
+            hashy.insert(String::from("s1"), 4);
+            
+            println!("Length (should be 2): {}", hashy.len());
+
+            //Only insert when not present
+            hashy.entry(String::from("s1")).or_insert(5);
+            
+            //Rust automagically marks our variable as mutable
+            let entry_s3 = hashy.entry(String::from("s3")).or_insert(9);
+            
+            *entry_s3 += 1;
+            
+            println!("Length (should be 3): {}", hashy.len());
+
+            // veccy_keys.push(1);
             
             //Should crash; t.name is no longer owner by t
             // println!("{}", t);

@@ -1,5 +1,6 @@
 mod root_module;
 mod sub_module;
+mod chapter_8_exercises;
 
 use crate::front_of_house::Location;
 
@@ -233,4 +234,6 @@ fn main() {
 
     root_module::root::print_from_module();
     sub_module::other_module::other::print_from_other();
+    
+    chapter_8_exercises::run();
 }
