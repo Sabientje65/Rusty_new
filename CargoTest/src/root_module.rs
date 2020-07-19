@@ -69,6 +69,8 @@ pub mod root {
             //Should not cause println to crahs
             //let x = &t.name;
 
+            const INT_LITERAL: u32 = 500_000; //_ ayyy
+            
             //Should crash; t.name is no longer owner by t
             // println!("{}", t);
 
