@@ -1,6 +1,8 @@
 pub mod root {
     // use std::fmt::Pointer;
 
+    use std::alloc::Layout;
+
     struct Test {
         name: String
     }
@@ -8,6 +10,14 @@ pub mod root {
     impl std::fmt::Display for Test {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             write!(f, "Name of Test struct: {}", self.name)
+        }
+    }
+    
+    impl Test {
+        pub fn string_pointer(s: &str) -> usize {
+            // s.make_ascii_lowercase();
+            
+            s.len()
         }
     }
     
@@ -41,6 +51,33 @@ pub mod root {
             println!("veccie: {}", &v[0])    
         }
         
-        println!("{}", t)
+        {
+            //alloc*
+            let mut str = "broepie";
+            Test::string_pointer(str);
+
+            println!("{}", t);
+            
+            //Transfer ownership (= transfer all values from stack from t.name to x)
+            //heap value remains unchanged
+            //rust has no invalidated and no longer allows usage of t.name
+            //this to prevent the variable from potentially going out of scope twice; causing bugs
+            //this because t.name no longer owns the associated piece of memory
+            //the associated piece of memory is now owned by x
+            let x = t.name;
+            
+            //Should not cause println to crahs
+            //let x = &t.name;
+
+            //Should crash; t.name is no longer owner by t
+            // println!("{}", t);
+
+            //Create pointer
+            let x2 = &x;
+            
+            //Kabüm
+            //let y = t.name;
+        }
+        //free (= drop)
     }
 }
