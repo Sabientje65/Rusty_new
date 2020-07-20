@@ -1,9 +1,5 @@
 use std::collections::HashMap;
 
-// static LIST_SIGNATURE: &str = "list";
-// static ADD_SIGNATURE: &str = "add";
-// static QUIT_SIGNATURE: &str = "quit";
-
 struct AddToDepartmentParameters {
     employee: String,
     department: String
@@ -47,11 +43,10 @@ impl Command {
     
     fn parse(str: &String) -> Command {
         let mut words = str.split(' ');
-        let first_word = words.next();
         
-        match first_word {
-            Some(first_word_value) => {
-                match first_word_value.to_lowercase().as_str() {
+        match words.next() {
+            Some(signature) => {
+                match signature.to_lowercase().as_str() {
                     //List DEPARTMENT
                     "list" => Command::create_list_command(words),
                     //Add EMPLOYEE to DEPARTMENT
@@ -59,7 +54,7 @@ impl Command {
                     "quit" => Command::Quit,
                     _ => Command::None
                 }
-            },
+            }
             _ => Command::None
         }
     }
