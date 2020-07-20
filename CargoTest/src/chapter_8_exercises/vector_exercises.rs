@@ -113,8 +113,6 @@ mod c8_vec {
 pub fn run(){
     use self::c8_vec::{Action, handle};
     
-    // let t = [1,2,3,4];
-    
     let actions = vec![
         Action::Mean(vec![3,9,1,2,6]),    
         Action::Median(vec![5,1,9,2,7]),    
