@@ -1,6 +1,7 @@
 mod root_module;
 mod sub_module;
 mod chapter_8_exercises;
+mod chapter_9_exercises;
 
 use crate::front_of_house::Location;
 
@@ -207,6 +208,7 @@ pub use self::boundary::User as StronkUser;
 use self::{boundary::User};
 
 fn main() {
+    /*
     test();
     
     // use boundary::sub::SubStruct;
@@ -234,6 +236,8 @@ fn main() {
 
     root_module::root::print_from_module();
     sub_module::other_module::other::print_from_other();
+     */
     
-    chapter_8_exercises::run();
+    // chapter_8_exercises::run();
+    chapter_9_exercises::run();
 }
