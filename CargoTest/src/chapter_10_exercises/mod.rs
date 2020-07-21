@@ -35,7 +35,7 @@ impl Display for NumberSet {
     }
 }
 
-fn find_largest_number<T>(list: &[T]) -> &T where T: core::cmp::Ord  {
+fn find_largest_number<T>(list: &[T]) -> &T where T: core::cmp::PartialOrd  {
     let mut largest: &T = &list[0];
 
     for item in list {
