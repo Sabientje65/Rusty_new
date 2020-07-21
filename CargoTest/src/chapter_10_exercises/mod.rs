@@ -4,6 +4,34 @@ struct NumberSet {
     numbers: Vec<u32>
 }
 
+struct Point<T, U> {
+    x: T,
+    y: U
+}
+
+trait PrettyPrint {
+    fn pretty_print(&self) -> String;
+}
+
+fn write_summary<T>(t: &T) where T : PrettyPrint {
+    print!("{}", t.pretty_print())
+}
+
+impl<T, U> PrettyPrint for Point<T, U> where 
+    T : Display,
+    U: Display 
+{
+    fn pretty_print(&self) -> String {
+        format!("{} - {}", self.x, self.y)
+    }
+}
+
+impl<T> Point<u32, T> {
+    fn get_x(&self) -> u32 {
+        self.x
+    }
+}
+
 impl NumberSet {
     fn largest(&self) -> u32 {
         find_largest_number(&self.numbers).to_owned()
@@ -53,4 +81,12 @@ pub fn run(){
     };
     
     println!("From set: {}, the largest value is: {}", set, set.largest());
+    
+    let p1: Point<u32, _> = Point { x: 1, y: 2.43 };
+    let p2: Point<u64, _> = Point { x: 1, y: 2.43 };
+    
+    
+    let x = p1.get_x();
+
+    write_summary(&p1)
 }
