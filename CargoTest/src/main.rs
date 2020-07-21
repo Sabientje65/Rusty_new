@@ -1,7 +1,7 @@
 mod root_module;
 mod sub_module;
 mod chapter_8_exercises;
-mod chapter_9_exercises;
+mod chapter_10_exercises;
 
 use crate::front_of_house::Location;
 
@@ -239,5 +239,5 @@ fn main() {
      */
     
     // chapter_8_exercises::run();
-    chapter_9_exercises::run();
+    chapter_10_exercises::run();
 }
