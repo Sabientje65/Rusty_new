@@ -19,7 +19,7 @@ fn write_summary<T>(t: &T) where T : PrettyPrint {
 
 impl<T, U> PrettyPrint for Point<T, U> where 
     T : Display,
-    U: Display 
+    U : Display 
 {
     fn pretty_print(&self) -> String {
         format!("{} - {}", self.x, self.y)
