@@ -13,7 +13,7 @@ trait PrettyPrint {
     fn pretty_print(&self) -> String;
 }
 
-fn write_summary<T>(t: &T) where T : PrettyPrint {
+fn write_summary<T: PrettyPrint>(t: &T) {
     print!("{}", t.pretty_print())
 }
 
@@ -63,10 +63,10 @@ impl Display for NumberSet {
     }
 }
 
-fn find_largest_number<T>(list: &[T]) -> &T where T: core::cmp::PartialOrd  {
-    let mut largest: &T = &list[0];
+fn find_largest_number<T>(list: &[T]) -> T where T: core::cmp::PartialOrd + core::marker::Copy  {
+    let mut largest = list[0];
 
-    for item in list {
+    for &item in list {
         if item > largest {
             largest = item;   
         }
