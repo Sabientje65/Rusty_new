@@ -75,6 +75,15 @@ fn find_largest_number<T>(list: &[T]) -> T where T: core::cmp::PartialOrd + core
     largest
 }
 
+fn largest_by_ref<'a, T: core::cmp::PartialOrd>(l: &'a T, r: &'a T) -> &'a T {
+    if l > r {
+        l
+    }
+    else{
+        r
+    }
+}
+
 pub fn run(){
     let set = NumberSet {
         numbers: vec![5, 6, 9, 7, 8]
