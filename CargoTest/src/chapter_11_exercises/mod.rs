@@ -45,6 +45,16 @@ impl Rect {
 fn add_two(a: u32) -> u32 {
     a + 2
 }
+fn echo_not_something(str: &String) -> String {
+    String::from("something")
+}
+
+fn panic_on_something_or_not_something(str: &String) {
+    if str == "not something" || str == "something" {
+        panic!("value was {}", str)
+    }
+}
+
 
 #[cfg(test)]
 mod tests {
@@ -79,6 +89,38 @@ mod tests {
     #[test]
     fn it_does_not_add_one(){
         assert_ne!(add_two(2), 3)
+    }
+    
+    #[test]
+    fn it_should_not_return_something(){
+        let r1 = String::from("value");
+        let something = echo_not_something(&r1);
+
+        assert_ne!(something, "something", "Expected value \"{}\" to not be \"{}\"", something, "something")
+    }
+
+    #[test]
+    #[should_panic(expected = "value was something")]
+    fn value_is_something(){
+        panic_on_something_or_not_something(&String::from("something"))
+    }
+
+    #[test]
+    #[should_panic(expected = "value was not something")]
+    fn value_is_not_something(){
+        // panic_on_something_or_not_something(&String::from("something"))
+
+        panic_on_something_or_not_something(&String::from("not something"))
+    }
+
+    #[test]
+    fn with_result_ok() -> Result<(), String> {
+        Ok(())
+    }
+    
+    #[test]
+    fn with_result_err() -> Result<(), String> {
+        Err(String::from("We /failed/"))
     }
     
     // #[test]
