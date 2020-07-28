@@ -223,6 +223,10 @@ fn run_exercises<T: exercise::exc::Exercise>(exercises: &Vec<Box<T>>){
     }
 }
 
+fn add(x: u32, y: u32) -> u32{
+    x + y
+}
+
 fn main() {
     /*
     test();
