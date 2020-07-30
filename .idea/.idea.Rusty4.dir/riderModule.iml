@@ -8,10 +8,12 @@
       <sourceFolder url="file://$MODULE_DIR$/../../adder/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../CargoTest/adder/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../CargoTest/adder/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../minigrep/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../CargoTest/adder/target" />
       <excludeFolder url="file://$MODULE_DIR$/../../CargoTest/target" />
       <excludeFolder url="file://$MODULE_DIR$/../../Main/target" />
       <excludeFolder url="file://$MODULE_DIR$/../../adder/target" />
+      <excludeFolder url="file://$MODULE_DIR$/../../minigrep/target" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
