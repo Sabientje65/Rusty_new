@@ -3,6 +3,7 @@ mod sub_module;
 mod chapter_8_exercises;
 mod chapter_10_exercises;
 mod chapter_11_exercises;
+mod chapter_13_exercises;
 
 pub mod exercise;
 
@@ -259,19 +260,21 @@ fn main() {
      */
     
     // chapter_8_exercises::run();
-    chapter_10_exercises::run();
+    // chapter_10_exercises::run();
     
     println!("Running exercises...");
 
-    let c11 = Box::from(chapter_11_exercises::Chapter11::new());
-    let c112 = Box::from(chapter_11_exercises::Chapter112::new());
+    chapter_13_exercises::run();
     
-    //Size is not known at runtime; thus we have to use Box<> constructs
-    let exercises: Vec<Box<dyn exercise::exc::Exercise>> = vec![c11, c112];
-
-    for exercise in exercises {
-        exercise.run();
-    }
+    // let c11 = Box::from(chapter_11_exercises::Chapter11::new());
+    // let c112 = Box::from(chapter_11_exercises::Chapter112::new());
+    // 
+    // //Size is not known at runtime; thus we have to use Box<> constructs
+    // let exercises: Vec<Box<dyn exercise::exc::Exercise>> = vec![c11, c112];
+    // 
+    // for exercise in exercises {
+    //     exercise.run();
+    // }
     
     // run_exercises(&exercises);
 }
